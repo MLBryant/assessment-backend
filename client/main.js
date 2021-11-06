@@ -23,34 +23,45 @@ const inputQuote = event => {
 
 const changeQuote = event => {
     event.preventDefault()
-    let newQuote = {
-        id: +editQuote.value,
-        quote: editedQuote.value
+    if (+editQuote.value > 0) {
+        let newQuote = {
+            id: +editQuote.value,
+            quote: editedQuote.value
+        }
+        axios.put(`http://localhost:4000/api/quote/${newQuote.id}`, newQuote)
+        .then(res => {
+            console.log(res.data);
+            getQuotes()
+        })
+    } else {
+        alert('Please select a quote')
     }
-    axios.put(`http://localhost:4000/api/quote/${newQuote.id}`, newQuote)
-    .then(res => {
-        console.log(res.data);
-        getQuotes()
-    })
     editedQuote.value = ''
 }
 
 const removeQuote = event => {
     event.preventDefault()
-    let id = +deleteQuote.value
-    axios.delete(`http://localhost:4000/api/quote/${id}`)
-    .then(res => {
-        console.log(res.data);
-        getQuotes()
-    })
+    if (+deleteQuote.value > 0) {
+        let id = +deleteQuote.value
+        axios.delete(`http://localhost:4000/api/quote/${id}`)
+        .then(res => {
+            console.log(res.data);
+            getQuotes()
+        })
+    } else {
+        alert('Please select a quote')
+    }
 }
-
 const getQuotes = () => {
     
     axios.get('http://localhost:4000/api/quote')
     .then(res => {
         for (x = 0; x < quoteDropdown.length; x++) {
             quoteDropdown[x].innerHTML = ''
+            let nullOption = document.createElement('option')
+            nullOption.value = 0
+            nullOption.text = 'Select quote'
+            quoteDropdown[x].appendChild(nullOption)
         }
         quoteList.innerHTML = '';
         for(i = 0; i < res.data.length; i++) {
@@ -60,7 +71,11 @@ const getQuotes = () => {
             for(j = 0; j < quoteDropdown.length; j++) {
                 let addedQuoteDropdown = document.createElement('option')
                 addedQuoteDropdown.value = +res.data[i].id
-                addedQuoteDropdown.text = res.data[i].quote.slice(0, 20) + '...'
+                if (res.data[i].quote.length > 20) {
+                    addedQuoteDropdown.text = res.data[i].quote.slice(0, 20) + '...'
+                } else {
+                    addedQuoteDropdown.text = res.data[i].quote
+                }
                 quoteDropdown[j].appendChild(addedQuoteDropdown, 0)
             }
         }

@@ -8,8 +8,8 @@ app.use(cors());
 
 app.use(express.json()); // When we want to be able to accept JSON.
 
-let quotes = [{'id': 0,'quote':'We shine bright so that others may shine brighter.'}, {'id': 1,'quote':'Success is not final, failure is not fatal: it is the courage to continue that counts.'}, {'id': 2,'quote':'Life is like riding a bicycle. To keep your balance, you must keep moving.'}]
-quoteId = 3
+let quotes = [{'id': 1,'quote':'We shine bright so that others may shine brighter.'}, {'id': 2,'quote':'Success is not final, failure is not fatal: it is the courage to continue that counts.'}, {'id': 3,'quote':'Life is like riding a bicycle. To keep your balance, you must keep moving.'}]
+quoteId = 4
 
 app.get("/api/compliment", (req, res) => {
   const compliments = ["Gee, you're a smart cookie!",
