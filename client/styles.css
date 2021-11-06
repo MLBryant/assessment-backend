@@ -16,7 +16,7 @@ body {
 button {
     margin-top: 10px;
     font-size: 18px;
-    background-color: rgb(221, 253, 255);
+    background-color: rgb(205, 252, 255);
     border-radius: 15px;
     box-shadow:  0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF;
 }
@@ -33,7 +33,7 @@ select {
 
 [type = 'submit'] {
     font-size: 16px;
-    background-color: rgb(221, 253, 255);
+    background-color: rgb(205, 252, 255);
     box-shadow:  0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF;
 }
 
