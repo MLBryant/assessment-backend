@@ -5,26 +5,31 @@
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body class="container">
+    <!-- Section below contains inputs for calls to the server -->
     <Section id="inputSection">
     <button id="complimentButton">Get a compliment</button>
     <button id = 'fortuneButton'>Have your fortune told</button>
+      <!-- Form below contains quote adding input -->
       <form action="" id = 'quoteInputForm' autocomplete="off">
         <label for="quoteInput">Add your inspirational quote:</label>
         <input type="text" id = 'quoteInput' placeholder="Enter text here">
         <input type="submit" value="Submit quote">
       </form>
+      <!-- Form below contains quote editing input -->
       <form action="" id="quoteEditForm" autocomplete="off">
         <label for="quoteEdit">Edit a quote:</label>
         <select name="quote" id="quoteEdit"></select>
         <input type="text" placeholder="Enter text here" id = 'editedQuote'>
         <input type="submit" value = 'Edit quote'>
       </form>
+      <!-- Form below contains quote deleting input -->
       <form action="" id="quoteDeleteForm" autocomplete="off">
         <label for="quoteDelete">Remove quote:</label>
         <select name="quote" id="quoteDelete"></select>
         <input type="submit" value = 'Delete quote'>
       </form>
     </Section>
+    <!-- Section below will contain quotes called from the server -->
     <section id = 'quoteSection'>
 
     </section>
