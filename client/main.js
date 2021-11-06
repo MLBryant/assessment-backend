@@ -15,6 +15,7 @@ const inputQuote = event => {
     }
     axios.post("http://localhost:4000/api/quote/", newQuote)
     .then(res => {
+        console.log(res.data);
         getQuotes()
     })
     addQuote.value = ''
@@ -28,6 +29,7 @@ const changeQuote = event => {
     }
     axios.put(`http://localhost:4000/api/quote/${newQuote.id}`, newQuote)
     .then(res => {
+        console.log(res.data);
         getQuotes()
     })
     editedQuote.value = ''
@@ -38,6 +40,7 @@ const removeQuote = event => {
     let id = +deleteQuote.value
     axios.delete(`http://localhost:4000/api/quote/${id}`)
     .then(res => {
+        console.log(res.data);
         getQuotes()
     })
 }
@@ -56,7 +59,7 @@ const getQuotes = () => {
             quoteList.appendChild(addedQuote)
             for(j = 0; j < quoteDropdown.length; j++) {
                 let addedQuoteDropdown = document.createElement('option')
-                addedQuoteDropdown.value = i
+                addedQuoteDropdown.value = +res.data[i].id
                 addedQuoteDropdown.text = res.data[i].quote.slice(0, 20) + '...'
                 quoteDropdown[j].appendChild(addedQuoteDropdown, 0)
             }
